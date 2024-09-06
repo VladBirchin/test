@@ -1,0 +1,44 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    gap: 10px;
+    margin: 10px;
+}
+
+.left_button, .right_button {
+    -color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.left_button:disabled, .right_button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.pagination-button {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pagination-button.active {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+button{
+    background-color: #fff;
+    padding: 5px 10px;
+    color: #007bff;
+    border-radius: 5px;
+}

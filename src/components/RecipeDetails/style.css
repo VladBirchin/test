@@ -1,0 +1,35 @@
+.card-img{
+    width: 50%;
+}
+
+.recipe-details{
+    text-align: center;
+}
+
+.recipe-details-content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.recipe-card-description{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+
+.recipe-card-ingredient{
+    width: 50%;
+
+}
+
+iframe{
+
+    margin: 20px auto; /* Centers the iframe horizontally and adds margin */
+    width: 100%; /* Makes the iframe full width */
+    max-width: 560px; /* Limits the maximum width of the iframe */
+    height: 315px; /* Sets a fixed height */
+    border: none; /* Removes border */
+    border-radius: 8px; /* Optional: adds rounded corners */
+}

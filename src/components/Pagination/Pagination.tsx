@@ -1,12 +1,11 @@
-// src/components/Pagination.tsx
-
 import React from 'react';
+import "./style.css"
 
 type PaginationProps = {
     currentPage: number;
     onPageChange: (page: number) => void;
     totalItems: number;
-    itemsPerPage: number; // Кількість елементів на сторінці
+    itemsPerPage: number;
 };
 
 export const Pagination: React.FC<PaginationProps> = ({ currentPage, onPageChange, totalItems, itemsPerPage }) => {
@@ -30,19 +29,22 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, onPageChang
 
     return (
         <div className="pagination">
-            <button onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+            <button className="left_button" onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
                 &lt;
             </button>
-            {getPageNumbers().map((page, index) => (
-                <button
-                    key={index}
-                    onClick={() => typeof page === 'number' && onPageChange(page)}
-                    className={currentPage === page ? 'active' : ''}
-                >
-                    {page}
-                </button>
-            ))}
-            <button onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+            <div className="pagination-buttons">
+                {getPageNumbers().map((page, index) => (
+                    <button
+                        key={index}
+                        onClick={() => typeof page === 'number' && onPageChange(page)}
+                        className={`pagination-button ${currentPage === page ? 'active' : ''}`}
+                    >
+                        {page}
+                    </button>
+                ))}
+            </div>
+            <button className="right_button" onClick={() => onPageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}>
                 &gt;
             </button>
         </div>

@@ -1,9 +1,7 @@
-// src/components/CategoryFilter.tsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-// Інтерфейс для типізації відповіді з API
+
 interface Category {
     strCategory: string;
 }
