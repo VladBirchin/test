@@ -1,5 +1,5 @@
 import React from 'react';
-import "./style.css"
+import "./style.css";
 
 type PaginationProps = {
     currentPage: number;
@@ -27,9 +27,18 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, onPageChang
         return pages;
     };
 
+    // Перевірка, чи є лише одна сторінка
+    if (totalPages === 1) {
+        return null;
+    }
+
     return (
         <div className="pagination">
-            <button className="left_button" onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+            <button
+                className="left_button"
+                onClick={() => onPageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+            >
                 &lt;
             </button>
             <div className="pagination-buttons">
@@ -43,8 +52,11 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, onPageChang
                     </button>
                 ))}
             </div>
-            <button className="right_button" onClick={() => onPageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}>
+            <button
+                className="right_button"
+                onClick={() => onPageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+            >
                 &gt;
             </button>
         </div>

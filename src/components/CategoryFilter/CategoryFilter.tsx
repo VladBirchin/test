@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import "./style.css";
 
 interface Category {
     strCategory: string;
@@ -26,13 +26,16 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({ onCategorySelect
     }, []);
 
     return (
-        <select onChange={(e) => onCategorySelect(e.target.value)}>
-            <option value="">All Categories</option>
-            {categories.map((category) => (
-                <option key={category} value={category}>
-                    {category}
-                </option>
-            ))}
-        </select>
+        <div className="category-filter-container">
+            <label htmlFor="category-select" className="category-label">Choose a Category:</label>
+            <select id="category-select" className="category-select" onChange={(e) => onCategorySelect(e.target.value)}>
+                <option value="">All Categories</option>
+                {categories.map((category) => (
+                    <option key={category} value={category}>
+                        {category}
+                    </option>
+                ))}
+            </select>
+        </div>
     );
 };

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ApiResponse } from '../../redux/recipesSlice';
 import "./style.css";
+
 export const RecipeDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
     const [recipe, setRecipe] = useState<any>(null);
 
     useEffect(() => {
@@ -20,13 +22,14 @@ export const RecipeDetails: React.FC = () => {
         fetchRecipe();
     }, [id]);
 
-    if (!recipe) return <div>Loading...</div>;
+    if (!recipe) return <div className="loading">Loading...</div>;
 
     return (
         <div className="recipe-details">
-            <h1>{recipe.strMeal}</h1>
+            <button className="back-button" onClick={() => navigate(-1)}>Menu</button>
+            <h1 className="recipe-title">{recipe.strMeal}</h1>
             <div className="recipe-details-content">
-                <img className="card-img" src={recipe.strMealThumb} alt={recipe.strMeal}/>
+                <img className="card-img" src={recipe.strMealThumb} alt={recipe.strMeal} />
                 <div className="recipe-card-description">
                     <div className="recipe-card-ingredient">
                         <h3>Ingredients:</h3>
@@ -49,10 +52,8 @@ export const RecipeDetails: React.FC = () => {
                     )}
                 </div>
 
-                <p>{recipe.strInstructions}</p>
-
+                <p className="recipe-instructions">{recipe.strInstructions}</p>
             </div>
-
         </div>
     );
 };

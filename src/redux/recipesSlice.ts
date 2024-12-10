@@ -18,22 +18,21 @@ export interface Recipe {
 
 interface FetchRecipesParams {
     category: string;
-    searchTerm?: string;
 }
 
 export interface ApiResponse {
     meals: Recipe[];
 }
 
-interface FetchRecipesParams {
-    category: string;
-}
-
 export const fetchRecipes = createAsyncThunk<Recipe[], FetchRecipesParams>(
     'recipes/fetchRecipes',
     async ({ category }: FetchRecipesParams) => {
-        const response = await axios.get<ApiResponse>(`https://www.themealdb.com/api/json/v1/1/search.php?s=${category}`);
-        return response.data.meals;
+        const url = category === 'All'
+            ? 'https://www. .com/api/json/v1/1/search.php?s=' // Запит на всі рецепти
+            : `https://www.themealdb.com/api/json/v1/1/search.php?s=${category}`; // Запит для категорії
+
+        const response = await axios.get<ApiResponse>(url);
+        return response.data.meals || [];
     }
 );
 
@@ -42,6 +41,8 @@ const initialState = {
     selectedRecipes: [] as Recipe[],
     categories: [] as string[],
     selectedCategory: '' as string,
+    loading: false, // Додати стан завантаження
+    error: null as string | null, // Додати стан помилки
 };
 
 interface RecipesState {
@@ -49,6 +50,8 @@ interface RecipesState {
     selectedRecipes: Recipe[];
     categories: string[];
     selectedCategory: string;
+    loading: boolean; // Стан завантаження
+    error: string | null; // Стан помилки
 }
 
 const recipesSlice = createSlice({
@@ -66,14 +69,21 @@ const recipesSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchRecipes.fulfilled, (state, action: PayloadAction<Recipe[]>) => {
-            state.items = action.payload;
-        });
+        builder
+            .addCase(fetchRecipes.pending, (state) => {
+                state.loading = true; // Початок завантаження
+                state.error = null; // Скинути помилку
+            })
+            .addCase(fetchRecipes.fulfilled, (state, action: PayloadAction<Recipe[]>) => {
+                state.loading = false; // Завантаження завершено
+                state.items = action.payload; // Отримані рецепти
+            })
+            .addCase(fetchRecipes.rejected, (state, action) => {
+                state.loading = false; // Завантаження завершено з помилкою
+                state.error = action.error.message || 'Failed to fetch recipes'; // Зберегти помилку
+            });
     },
 });
-
-
-
 
 export const { selectRecipe, removeRecipe } = recipesSlice.actions;
 export default recipesSlice.reducer;

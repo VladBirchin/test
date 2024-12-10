@@ -14,3 +14,19 @@
 .search-input{
     margin-bottom: 10px;
 }
+
+.search-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #b3d7ff;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #007bff;
+}

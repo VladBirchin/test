@@ -1,0 +1,30 @@
+.category-filter-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.category-label {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.category-select {
+    padding: 10px;
+    font-size: 1rem;
+    color: #555;
+    background-color: #e7f3fe;
+    border: 1px solid #b3d7ff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.category-select:hover {
+    background-color: #d0ebff;
+}
+
+.category-select:focus {
+    outline: none;
+    border: 2px solid #007bff;
+}

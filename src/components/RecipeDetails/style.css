@@ -1,35 +1,103 @@
-.card-img{
-    width: 50%;
-}
-
-.recipe-details{
+.recipe-details {
     text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.recipe-details-content{
+.recipe-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.recipe-details-content {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     justify-content: center;
+    align-items: flex-start;
+    margin: 20px 0;
 }
 
-.recipe-card-description{
+.card-img {
+    width: 50%;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 300px;
+}
+
+.recipe-card-description {
+    width: 50%;
+    padding: 20px;
+}
+
+.recipe-card-ingredient {
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 20px;
+    justify-content: space-between;
 }
 
-.recipe-card-ingredient{
-    width: 50%;
-
+.recipe-card-ingredient h3 {
+    font-size: 1.5rem;
+    color: #555;
+    width: 100%;
 }
 
-iframe{
-
-    margin: 20px auto; /* Centers the iframe horizontally and adds margin */
-    width: 100%; /* Makes the iframe full width */
-    max-width: 560px; /* Limits the maximum width of the iframe */
-    height: 315px; /* Sets a fixed height */
-    border: none; /* Removes border */
-    border-radius: 8px; /* Optional: adds rounded corners */
+.recipe-card-ingredient ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
+
+.recipe-card-ingredient li {
+    background-color: #007bff;
+    padding: 20px 100px;
+    color: #f0f0f0;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.recipe-instructions {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #666;
+}
+
+iframe {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+    font-size: 1.5rem;
+    color: #888;
+    margin-top: 50px;
+}
+.back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
